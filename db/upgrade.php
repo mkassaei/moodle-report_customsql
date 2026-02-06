@@ -141,7 +141,8 @@ function xmldb_report_customsql_upgrade($oldversion) {
         $table = new xmldb_table('report_customsql_queries');
         $field = new xmldb_field(
             'querylimit',
-            XMLDB_TYPE_INTEGER, '10',
+            XMLDB_TYPE_INTEGER,
+            '10',
             XMLDB_UNSIGNED,
             XMLDB_NOTNULL,
             null,

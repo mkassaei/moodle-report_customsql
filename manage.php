@@ -53,21 +53,22 @@ if (!empty($categories)) {
                 ['id' => $category->id]
             ),
             format_string($category->name) . ' ',
-            ['class' => 'report_customsql']
-            ) . html_writer::tag(
-                'a',
-                $OUTPUT->pix_icon(
-                    't/edit', get_string('edit')
+            ['class' => 'report_customsql'],
+        ) . html_writer::tag(
+            'a',
+            $OUTPUT->pix_icon(
+                't/edit',
+                get_string('edit'),
+            ),
+            [
+                'title' => get_string(
+                    'editcategoryx',
+                    'report_customsql',
+                    format_string($category->name)
                 ),
-                [
-                    'title' => get_string(
-                        'editcategoryx',
-                        'report_customsql',
-                        format_string($category->name)
-                    ),
-                    'href' => report_customsql_url('addcategory.php?id=' . $category->id)
-                ]
-            );
+                'href' => report_customsql_url('addcategory.php?id=' . $category->id),
+            ]
+        );
 
         if ($category->id != 1 && !$DB->record_exists('report_customsql_queries', ['categoryid' => $category->id])) {
             echo ' ' .  html_writer::tag(
@@ -79,7 +80,7 @@ if (!empty($categories)) {
                         'report_customsql',
                         format_string($category->name)
                     ),
-                    'href' => report_customsql_url('categorydelete . php?id=' . $category->id)
+                    'href' => report_customsql_url('categorydelete.php?id=' . $category->id),
                 ]
             );
         }
